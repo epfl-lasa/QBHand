@@ -13,12 +13,12 @@ List connected usb devices
   ```
   Note Vendor and Product
   ```
-  Bus 001 Device 022: ID 0403:60155 Future Technology Devices International, Ltd Bridge(I2C/SPI/UART/FIFO)
+  Bus 001 Device 022: ID 0403:6015 Future Technology Devices International, Ltd Bridge(I2C/SPI/UART/FIFO)
   ```
 
 Modprobe your usbserial adapter
   ```
-  ~$ modprobe usbserial vendor=0x0403 product=0x60155
+  ~$ modprobe usbserial vendor=0x0403 product=0x6015
   ```
 
 Find the number of your usbserial adapter driver
@@ -48,7 +48,7 @@ Check connection with serial port:
   Otherwise something's wrong and you must debug it! :smiling_imp:
 
 ## Step 2: Install qbAPI
-The qbAPI is tghe C++ library needed to communicate and control the qbHand.We provide this folder in this repo, but if you need to update to a newer version download from: [qbAPI](https://github.com/qbrobotics/qbAPI)
+The qbAPI is the C++ library needed to communicate and control the qbHand.We provide this folder in this repo, but if you need to update to a newer version download from: [qbAPI](https://github.com/qbrobotics/qbAPI). Hand has old firmware, using -b qbAPI_opt
 
 ```
 ~$ cd ~/QBHand/qbAPI/src
@@ -56,19 +56,27 @@ The qbAPI is tghe C++ library needed to communicate and control the qbHand.We pr
 
 ```
 
-## Step 3: Install qbAdmin
-This package contains command-line tools for easy debugging and open/close of the hand. Downloaded from here: [qbAdmin](https://github.com/qbrobotics/qbadmin)
+## Step 3: Install qbmoveadmin
+Downloaded from here: [qbmoveadmin](https://github.com/qbrobotics/qbmoveadmin)
 
 ```
-~$ cd ~/QBHand/qbadmin/src
+~$ cd ~/QBHand/qbmoveadmin/src
 ~$ make
 
 ```
+## Step 4: Install handadmin
+This package contains command-line tools for easy debugging and open/close of the hand. Downloaded from here: [handadmin](https://github.com/qbrobotics/handadmin)
+```
+~$ cd ~/QBHand/handadmin/src
+~$ make
+
+```
+
 To test API installation:
 
 ```
-~$ cd ~/QBHand/qbadmin/bin_linux/
-~$ ./qbmove_init
+~$ cd ~/QBHand/handadmin/bin_linux/
+~$ ./hand_demo
 
 ```
 
