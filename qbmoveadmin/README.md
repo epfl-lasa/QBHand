@@ -1,3 +1,5 @@
+# Command line tools for the qbmoves
+
 ### IMPORTANT: Versioning:
 Each of the repositories in the following table has a version number
 composed of 3 numbers in the form: **v x.y.z**
@@ -31,17 +33,6 @@ E.g.
 | qbmoveadmin v4.2.3 | qbAPI v4.5.7 | qbmove firmware v4.5.0 | YES        |
 
 
-# What is this?
-
-These are the C/C++ libraries to interact with *qbmove* and *SoftHand*
-
-If you want to use these libraries with [*qbmoveadmin*](https://github.com/qbrobotics/qbmoveadmin) or [*handadmin*](https://github.com/qbrobotics/handadmin) software, be sure to organize your folder as follows:
-
-* your_workingcopy
-    * qbAPI
-    * qbmoveadmin
-    * handadmin
-
 ## Install the compiler
 
 The simplest way to compile these libraries is by using the command line utility *make*.
@@ -72,32 +63,49 @@ for the make utility is in `C:\Program Files (x86)\GnuWin32\bin`).
 >NOTE: if you have the CMD already opened when performing the installation,
 >you probably will need to reopen a new one to be able to use the utilities.
 
+## Compile the software
 
-### Compile the libraries
+Fisrt of all you need to download the
+[*qbAPI*](https://github.com/qbrobotics/qbapi)
+repository and be sure to have a file tree organised like this (remove the `-master` suffix):
 
-Open the Terminal (UNIX and MacOSX) or the CMD (Windows), reach the
-`/src` folder and type `make`. Depending on your OS you should
-see a folder tree like this:
+* your_workingcopy
+    * qbAPI
+    * qbmoveadmin
 
-* qbAPI
-    * lib_win
-        * libqbmove_comm.a
-    * objs_win
-    * src
-    * license.txt
-    * README.txt
+Then you will need to compile the libraries.
+To do that, go to `qbAPI/src` and type `make`.
+Then, to compile the tools, go to `qbmoveadmin/src` folder and type `make`.
+
+If everything is ok, depending on your OS, you should see a folder tree like this:
+
+* qbmoveadmin
+   * bin_win
+   * conf_files
+   * objs_win
+   * src
 
 or this:
 
-* qbAPI
-    * lib_unix
-        * libqbmove_comm.a
-    * objs_unix
-    * src
-    * license.txt
-    * README.txt
+* qbmoveadmin
+   * bin_unix
+   * conf_files
+   * objs_unix
+   * src
 
-> The generated `libqbmove_comm.a` is a static library and
-> can be used in your own application.
-> It is also used by [*qbmoveadmin*](https://github.com/qbrobotics/qbmoveadmin)
-> and [*handadmin*](https://github.com/qbrobotics/handadmin).
+## Using the tools
+
+Usign a terminal, go to the binary folder and execute what you need e.g.:
+
+windows
+`name_of_the_bin.exe`
+
+UNIX
+`./name_of_the_bin`
+
+> By executing the tools you will receive the usage instruction
+
+### Precompiled version
+
+For windows there is a precompiled version downloadable [here](https://www.dropbox.com/s/7b2bv93fxpobdkd/qbtools.zip?dl=0) (NOT UPDATED)
+

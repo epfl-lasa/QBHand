@@ -1,3 +1,5 @@
+# Command line tool for the SoftHand
+
 ### IMPORTANT: Versioning:
 Each of the repositories in the following table has a version number
 composed of 3 numbers in the form: **v x.y.z**
@@ -30,18 +32,6 @@ E.g.
 | qbmoveadmin v3.2.3 | qbAPI v4.5.0 | qbmove firmware v4.6.7 | NO         |
 | qbmoveadmin v4.2.3 | qbAPI v4.5.7 | qbmove firmware v4.5.0 | YES        |
 
-
-# What is this?
-
-These are the C/C++ libraries to interact with *qbmove* and *SoftHand*
-
-If you want to use these libraries with [*qbmoveadmin*](https://github.com/qbrobotics/qbmoveadmin) or [*handadmin*](https://github.com/qbrobotics/handadmin) software, be sure to organize your folder as follows:
-
-* your_workingcopy
-    * qbAPI
-    * qbmoveadmin
-    * handadmin
-
 ## Install the compiler
 
 The simplest way to compile these libraries is by using the command line utility *make*.
@@ -72,32 +62,52 @@ for the make utility is in `C:\Program Files (x86)\GnuWin32\bin`).
 >NOTE: if you have the CMD already opened when performing the installation,
 >you probably will need to reopen a new one to be able to use the utilities.
 
+## Compile the tools
 
-### Compile the libraries
+Fisrt of all you need to download the
+[*qbAPI*](https://github.com/qbrobotics/qbapi)
+repository and be sure to have a file tree organised like that (remove the `-master` suffix):
 
-Open the Terminal (UNIX and MacOSX) or the CMD (Windows), reach the
-`/src` folder and type `make`. Depending on your OS you should
-see a folder tree like this:
+* your_workingcopy
+    * qbAPI
+    * handadmin
 
-* qbAPI
-    * lib_win
-        * libqbmove_comm.a
+Then you will need to compile the libraries.
+To do that, go to `qbAPI/src` and type `make`.
+Then, to compile the tools, go to `handadmin/src` folder and type `make` again.
+
+If everything is ok, dependgin on your OS you should see a folder tree like this:
+
+* handadmin
+    * bin_win
+    * conf_files
     * objs_win
     * src
-    * license.txt
-    * README.txt
 
 or this:
 
-* qbAPI
-    * lib_unix
-        * libqbmove_comm.a
+* handadmin
+    * bin_unix
+    * conf_files
     * objs_unix
     * src
-    * license.txt
-    * README.txt
 
-> The generated `libqbmove_comm.a` is a static library and
-> can be used in your own application.
-> It is also used by [*qbmoveadmin*](https://github.com/qbrobotics/qbmoveadmin)
-> and [*handadmin*](https://github.com/qbrobotics/handadmin).
+## Using the tools
+
+Go to the binary folder of you OS and execute the binary you need e.g.:
+
+windows
+`name_of_bin.exe`
+
+unix
+`./name_of_the_bin`
+
+> By executing the tools you will receive the usage instruction
+
+> NOTE: if it is the first time you use the qbmove units on your computer,
+> it is possible that you need to download the drivers to let your computer see the port correctly.
+> To do that visit [FTDI driver](http://www.ftdichip.com/Drivers/VCP.htm) webpage -> VCP drivers and download the proper driver depending on your OS
+
+### Precompiled version
+
+For windows there is a precompiled version downloadable [here](http://sourceforge.net/projects/qbroboticsproject/files/softhand/handadmin_win.zip/download). (NOT UPDATED)
