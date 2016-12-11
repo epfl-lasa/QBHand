@@ -55,16 +55,7 @@ The qbAPI is the C++ library needed to communicate and control the qbHand.We pro
 ~$ make
 
 ```
-
-## Step 3: Install qbmoveadmin
-Downloaded from here: [qbmoveadmin](https://github.com/qbrobotics/qbmoveadmin)
-
-```
-~$ cd ~/QBHand/qbmoveadmin/src
-~$ make
-
-```
-## Step 4: Install handadmin
+## Step 3: Install handadmin
 This package contains command-line tools for easy debugging and open/close of the hand. Downloaded from here: [handadmin](https://github.com/qbrobotics/handadmin)
 ```
 ~$ cd ~/QBHand/handadmin/src
