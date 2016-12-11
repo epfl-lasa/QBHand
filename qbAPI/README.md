@@ -5,8 +5,8 @@ composed of 3 numbers in the form: **v x.y.z**
 |  Tools  [T]    |  Libraries [L] |  Firmware [F]            |
 |-----------------|---------------|--------------------------|
 | qbmove simulink | qbAPI         | qbmove firmware          |
-| qbmoveadmin     |               | qbmove advanced firmware |
-| handmoveadmin   |               | hand firmware micro      |
+| qbadmin         |               | qbmove advanced firmware |
+|                 |               | hand firmware micro      |
 
 E.g. **xT** is the **x** number of the Tools whereas **yF** is the **y** number of the Firmware version.
 
@@ -24,23 +24,22 @@ Summarising
 
 E.g.
 
-| Tools              | Libraries    | Firmware               | Compatible |
-|--------------------|--------------|------------------------|------------|
-| qbmoveadmin v4.2.3 | qbAPI v4.5.0 | qbmove firmware v4.6.7 | YES        |
-| qbmoveadmin v3.2.3 | qbAPI v4.5.0 | qbmove firmware v4.6.7 | NO         |
-| qbmoveadmin v4.2.3 | qbAPI v4.5.7 | qbmove firmware v4.5.0 | YES        |
+| Tools          | Libraries    | Firmware               | Compatible |
+|----------------|--------------|------------------------|------------|
+| qbadmin v4.2.3 | qbAPI v4.5.0 | qbmove firmware v4.6.7 | YES        |
+| qbadmin v3.2.3 | qbAPI v4.5.0 | qbmove firmware v4.6.7 | NO         |
+| qbadmin v4.2.3 | qbAPI v4.5.7 | qbmove firmware v4.5.0 | YES        |
 
 
 # What is this?
 
-These are the C/C++ libraries to interact with *qbmove* and *SoftHand*
+These are the C/C++ libraries to interact with *qbMove* and *qbHand*
 
-If you want to use these libraries with [*qbmoveadmin*](https://github.com/qbrobotics/qbmoveadmin) or [*handadmin*](https://github.com/qbrobotics/handadmin) software, be sure to organize your folder as follows:
+If you want to use these libraries with [*qbadmin*](https://github.com/qbrobotics/qbadmin) software, be sure to organize your folder as follows:
 
 * your_workingcopy
     * qbAPI
-    * qbmoveadmin
-    * handadmin
+    * qbadmin
 
 ## Install the compiler
 
@@ -99,5 +98,4 @@ or this:
 
 > The generated `libqbmove_comm.a` is a static library and
 > can be used in your own application.
-> It is also used by [*qbmoveadmin*](https://github.com/qbrobotics/qbmoveadmin)
-> and [*handadmin*](https://github.com/qbrobotics/handadmin).
+> It is also used by [*qbadmin*](https://github.com/qbrobotics/qbadmin).
