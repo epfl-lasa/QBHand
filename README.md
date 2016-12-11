@@ -50,5 +50,26 @@ Check connection with serial port:
 ## Step 2: Install qbAPI
 The qbAPI is tghe C++ library needed to communicate and control the qbHand.We provide this folder in this repo, but if you need to update to a newer version download from: [qbAPI](https://github.com/qbrobotics/qbAPI)
 
+```
+~$ cd ~/QBHand/qbAPI/src
+~$ make
+
+```
+
 ## Step 3: Install qbAdmin
 This package contains command-line tools for easy debugging and open/close of the hand. Downloaded from here: [qbAdmin](https://github.com/qbrobotics/qbadmin)
+
+```
+~$ cd ~/QBHand/qbadmin/src
+~$ make
+
+```
+To test API installation:
+
+```
+~$ cd ~/QBHand/qbadmin/bin_linux/
+~$ ./qbmove_init
+
+```
+
+
