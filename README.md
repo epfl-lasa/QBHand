@@ -3,7 +3,8 @@ Installation instructions and software for interfacing with the QBHand.  (Unix/L
 
 (For Windows pull the -Windows branch.)
 
-
+TODO:
+Check out this repo for use with ROS/Gazebo https://github.com/CentroEPiaggio/pisa-iit-soft-hand
 
 ## Step 1: Verify USB/Serial Driver
 
