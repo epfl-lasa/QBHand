@@ -72,4 +72,9 @@ To test API installation:
 
 ```
 
+Open and close the hand:
+```
+./handmove -d
+./handmove -a
+```
 
