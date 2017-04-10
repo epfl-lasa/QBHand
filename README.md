@@ -2,6 +2,9 @@
 Installation instructions and software for interfacing with the QBHand.  (Unix/Linux instructions).
 
 ## Hardware Setup
+- 2 power supplies with 12V each, one connected to channel 1 to power the dummy and the other one connected to channel 5 to power the hand.
+- Bus connection from hand connected to Channel 5.
+- Mini-usb cable connected from dummy to your PC.
 
 <p align="center">
 <img src="https://github.com/epfl-lasa/QBHand/blob/master/documentation/hand_connected.jpg" width="390"><img src="https://github.com/epfl-lasa/QBHand/blob/master/documentation/power_connections.jpg" width="390">
