@@ -95,7 +95,7 @@ To test API installation (sequence of open/close commands):
 ```
 
 ## Step 5: ROS Interface
-This ROS node is an interface between the qbAPI and ROS, it was taken from here: https://github.com/qbrobotics/qb_interface_node and updated with the qbAPI compatible with our specific hand. After installing in the package in your workspace you can launch the node as follows:
+This ROS node is an interface between the qbAPI and ROS, it was taken from here: https://github.com/qbrobotics/qb_interface_node and updated with the qbAPI compatible with our specific hand. After installing the package in your ```catkins_ws``` you can launch the node as follows:
 ```
 ~$ roslaunch qb_interface qb_interface.launch
 ```
