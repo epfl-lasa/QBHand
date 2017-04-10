@@ -1,11 +1,14 @@
 # QBHand
-Installation instructions and software for interfacing with the QBHand.  (Unix/Linux instructions)
+Installation instructions and software for interfacing with the QBHand.  (Unix/Linux instructions).
 
-(For Windows pull the -Windows branch.)
+## Hardware Setup
+- 2 power supplies with 12V each, one connected to channel 1 to power the dummy and the other one connected to channel 5 to power the hand.
+- Bus connection from hand connected to Channel 5.
+- Mini-usb cable connected from dummy to your PC.
 
-TODO:
-Check out this repo for use with ROS/Gazebo: https://github.com/CentroEPiaggio/pisa-iit-soft-hand
-or this one: https://github.com/qbrobotics/qb_interface_node
+<p align="center">
+<img src="https://github.com/epfl-lasa/QBHand/blob/master/documentation/hand_connected.jpg" width="390"><img src="https://github.com/epfl-lasa/QBHand/blob/master/documentation/power_connections.jpg" width="390">
+</p>
 
 ## Step 1: Verify USB/Serial Driver
 
@@ -51,7 +54,7 @@ Check connection with serial port:
   
 
 ## Step 2: Try HandTool Gui
-To use the GUI you should add user to dialout group as follow:
+To use the GUI you should add user to dialout group as follows (only works under Ubuntu 16.04 LTS):
 ```
 ~$ sudo adduser user_name dialout
 ```
@@ -66,8 +69,6 @@ and run:
 ```
 ~$ ./HandTool
 ```
-
-
 
 ## Step 3: Install qbAPI
 The qbAPI is the C++ library needed to communicate and control the qbHand.We provide this folder in this repo, but if you need to update to a newer version download from: [qbAPI](https://github.com/qbrobotics/qbAPI).
@@ -91,4 +92,8 @@ To test API installation (sequence of open/close commands):
 ~$ cd ~/QBHand/qbadmin/bin_linux/
 ~$ ./qbadmin -k
 
-``
+```
+
+## Step 5: ROS Interface
+Check out this repo for use with ROS/Gazebo: https://github.com/CentroEPiaggio/pisa-iit-soft-hand
+or this one: https://github.com/qbrobotics/qb_interface_node
