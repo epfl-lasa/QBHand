@@ -54,20 +54,17 @@ Check connection with serial port:
 To use the GUI you should add user to dialout group as follow:
 ```
 ~$ sudo adduser user_name dialout
-
 ```
 Then set permissions for the GUI:
 
 ```
 ~$ cd ~/QBHand/HandTool_unix_v2.2.3/
 ~$ chmod a+x HandTool
-
 ```
 and run:
 
 ```
 ~$ ./HandTool
-
 ```
 
 
