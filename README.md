@@ -95,5 +95,16 @@ To test API installation (sequence of open/close commands):
 ```
 
 ## Step 5: ROS Interface
-Check out this repo for use with ROS/Gazebo: https://github.com/CentroEPiaggio/pisa-iit-soft-hand
-or this one: https://github.com/qbrobotics/qb_interface_node
+This ROS node is an interface between the qbAPI and ROS, it was taken from here: https://github.com/qbrobotics/qb_interface_node and updated with the qbAPI compatible with our specific hand. After installing in the package in your workspace you can launch the node as follows:
+```
+~$ roslaunch qb_interface qb_interface.launch
+```
+We can read the motor measurements on the following topic: 
+```
+rostopic echo /qb_class/hand_measurement
+```
+And send commands by publishing this topic:
+```
+rostopic pub -r 20 /qb_class/hand_ref qb_interface/handRef '{closure:[10000000.0]}'
+```
+The hand_command in the config.yaml file is set to ticks so very large **positive** numbers are for opening the hand and very large **negative** are for closing.
