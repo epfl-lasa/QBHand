@@ -1,14 +1,14 @@
-# Command line tool for the SoftHand
+# Command line tools for qbmoves and hands
 
 ### IMPORTANT: Versioning:
 Each of the repositories in the following table has a version number
 composed of 3 numbers in the form: **v x.y.z**
 
-|  Tools  [T]    |  Libraries [L] |  Firmware [F]            |
-|-----------------|---------------|--------------------------|
-| qbmove simulink | qbAPI         | qbmove firmware          |
-| qbmoveadmin     |               | qbmove advanced firmware |
-| handmoveadmin   |               | hand firmware micro      |
+|  Tools  [T]     |  Libraries [L] |  Firmware [F]            |
+|-----------------|----------------|--------------------------|
+| qbmove simulink | qbAPI          | qbmove firmware          |
+| qbadmin         |                | qbmove advanced firmware |
+|                 |                | hand firmware micro      |
 
 E.g. **xT** is the **x** number of the Tools whereas **yF** is the **y** number of the Firmware version.
 
@@ -26,16 +26,22 @@ Summarising
 
 E.g.
 
-| Tools              | Libraries    | Firmware               | Compatible |
-|--------------------|--------------|------------------------|------------|
-| qbmoveadmin v4.2.3 | qbAPI v4.5.0 | qbmove firmware v4.6.7 | YES        |
-| qbmoveadmin v3.2.3 | qbAPI v4.5.0 | qbmove firmware v4.6.7 | NO         |
-| qbmoveadmin v4.2.3 | qbAPI v4.5.7 | qbmove firmware v4.5.0 | YES        |
+| Tools          | Libraries    | Firmware               | Compatible |
+|----------------|--------------|------------------------|------------|
+| qbadmin v4.2.3 | qbAPI v4.5.0 | qbmove firmware v4.6.7 | YES        |
+| qbadmin v3.2.3 | qbAPI v4.5.0 | qbmove firmware v4.6.7 | NO         |
+| qbadmin v4.2.3 | qbAPI v4.5.7 | qbmove firmware v4.5.0 | YES        |
 
-## Install the compiler
+
+## Installation requirements
 
 The simplest way to compile these libraries is by using the command line utility *make*.
 To do so, you will need also the *gcc/g++* compiler installed on your system.
+
+> NOTE: if it is the first time you use qbrobotics devices on your computer, it is possible that
+> you need to download the drivers to let your computer see the port correctly.
+> To do that visit [FTDI driver](http://www.ftdichip.com/Drivers/VCP.htm) webpage -> VCP drivers
+> and download the proper driver depending on your OS
 
 ### Unix
 You should have both *gcc/g++* and *make* installed. 
@@ -62,52 +68,45 @@ for the make utility is in `C:\Program Files (x86)\GnuWin32\bin`).
 >NOTE: if you have the CMD already opened when performing the installation,
 >you probably will need to reopen a new one to be able to use the utilities.
 
-## Compile the tools
+## Compile the software
 
 Fisrt of all you need to download the
 [*qbAPI*](https://github.com/qbrobotics/qbapi)
-repository and be sure to have a file tree organised like that (remove the `-master` suffix):
+repository and be sure to have a file tree organised like this (remove the `-master` suffix):
 
 * your_workingcopy
     * qbAPI
-    * handadmin
+    * qbadmin
 
 Then you will need to compile the libraries.
 To do that, go to `qbAPI/src` and type `make`.
-Then, to compile the tools, go to `handadmin/src` folder and type `make` again.
+Then, to compile the tools, go to `qbadmin/src` folder and type `make`.
 
-If everything is ok, dependgin on your OS you should see a folder tree like this:
+If everything is ok, depending on your OS, you should see a folder tree like this:
 
-* handadmin
-    * bin_win
-    * conf_files
-    * objs_win
-    * src
+* qbadmin
+   * bin_win
+   * conf_files
+   * objs_win
+   * src
 
 or this:
 
-* handadmin
-    * bin_unix
-    * conf_files
-    * objs_unix
-    * src
+* qbadmin
+   * bin_unix
+   * conf_files
+   * objs_unix
+   * src
 
 ## Using the tools
 
-Go to the binary folder of you OS and execute the binary you need e.g.:
+Usign a terminal, go to the binary folder and execute what you need e.g.:
 
 windows
-`name_of_bin.exe`
+`name_of_the_bin.exe`
 
-unix
+UNIX
 `./name_of_the_bin`
 
 > By executing the tools you will receive the usage instruction
 
-> NOTE: if it is the first time you use the qbmove units on your computer,
-> it is possible that you need to download the drivers to let your computer see the port correctly.
-> To do that visit [FTDI driver](http://www.ftdichip.com/Drivers/VCP.htm) webpage -> VCP drivers and download the proper driver depending on your OS
-
-### Precompiled version
-
-For windows there is a precompiled version downloadable [here](http://sourceforge.net/projects/qbroboticsproject/files/softhand/handadmin_win.zip/download). (NOT UPDATED)
