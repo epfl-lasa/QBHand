@@ -54,7 +54,7 @@ Check connection with serial port:
   
 
 ## Step 2: Try HandTool Gui
-To use the GUI you should add user to dialout group as follow:
+To use the GUI you should add user to dialout group as follows (only works under Ubuntu 16.04 LTS):
 ```
 ~$ sudo adduser user_name dialout
 ```
