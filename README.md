@@ -54,20 +54,17 @@ Check connection with serial port:
 To use the GUI you should add user to dialout group as follow:
 ```
 ~$ sudo adduser user_name dialout
-
 ```
 Then set permissions for the GUI:
 
 ```
 ~$ cd ~/QBHand/HandTool_unix_v2.2.3/
 ~$ chmod a+x HandTool
-
 ```
 and run:
 
 ```
 ~$ ./HandTool
-
 ```
 
 
@@ -88,17 +85,10 @@ This package contains command-line tools for easy debugging and open/close of th
 
 ```
 
-To test API installation:
+To test API installation (sequence of open/close commands):
 
 ```
 ~$ cd ~/QBHand/qbadmin/bin_linux/
-~$ ./hand_demo
+~$ ./qbadmin -k
 
-```
-
-Open and close the hand:
-```
-./handmove -d
-./handmove -a
-```
-
+``
