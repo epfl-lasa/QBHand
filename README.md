@@ -4,7 +4,8 @@ Installation instructions and software for interfacing with the QBHand.  (Unix/L
 (For Windows pull the -Windows branch.)
 
 TODO:
-Check out this repo for use with ROS/Gazebo https://github.com/CentroEPiaggio/pisa-iit-soft-hand
+Check out this repo for use with ROS/Gazebo: https://github.com/CentroEPiaggio/pisa-iit-soft-hand
+or this one: https://github.com/qbrobotics/qb_interface_node
 
 ## Step 1: Verify USB/Serial Driver
 
@@ -47,19 +48,42 @@ Check connection with serial port:
   Disconnected.
   ```
   Otherwise something's wrong and you must debug it! :smiling_imp:
+  
 
-## Step 2: Install qbAPI
-The qbAPI is the C++ library needed to communicate and control the qbHand.We provide this folder in this repo, but if you need to update to a newer version download from: [qbAPI](https://github.com/qbrobotics/qbAPI). Hand has old firmware, using -b qbAPI_opt
+## Step 2: Try HandTool Gui
+To use the GUI you should add user to dialout group as follow:
+```
+~$ sudo adduser user_name dialout
+
+```
+Then set permissions for the GUI:
+
+```
+~$ cd ~/QBHand/HandTool_unix_v2.2.3/
+~$ chmod a+x HandTool
+
+```
+and run:
+
+```
+~$ ./HandTool
+
+```
+
+
+
+## Step 3: Install qbAPI
+The qbAPI is the C++ library needed to communicate and control the qbHand.We provide this folder in this repo, but if you need to update to a newer version download from: [qbAPI](https://github.com/qbrobotics/qbAPI).
 
 ```
 ~$ cd ~/QBHand/qbAPI/src
 ~$ make
 
 ```
-## Step 3: Install handadmin
-This package contains command-line tools for easy debugging and open/close of the hand. Downloaded from here: [handadmin](https://github.com/qbrobotics/handadmin)
+## Step 4: Install qbadmin
+This package contains command-line tools for easy debugging and open/close of the hand. Downloaded from here: [handadmin](https://github.com/qbrobotics/qbadmin)
 ```
-~$ cd ~/QBHand/handadmin/src
+~$ cd ~/QBHand/qbadmin/src
 ~$ make
 
 ```
@@ -67,7 +91,7 @@ This package contains command-line tools for easy debugging and open/close of th
 To test API installation:
 
 ```
-~$ cd ~/QBHand/handadmin/bin_linux/
+~$ cd ~/QBHand/qbadmin/bin_linux/
 ~$ ./hand_demo
 
 ```
