@@ -88,17 +88,10 @@ This package contains command-line tools for easy debugging and open/close of th
 
 ```
 
-To test API installation:
+To test API installation (sequence of open/close commands):
 
 ```
 ~$ cd ~/QBHand/qbadmin/bin_linux/
-~$ ./hand_demo
+~$ ./qbadmin -k
 
-```
-
-Open and close the hand:
-```
-./handmove -d
-./handmove -a
-```
-
+``
