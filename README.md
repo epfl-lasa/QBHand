@@ -101,10 +101,10 @@ This ROS node is an interface between the qbAPI and ROS, it was taken from here:
 ```
 We can read the motor measurements on the following topic: 
 ```
-rostopic echo /qb_class/hand_measurement
+~$ rostopic echo /qb_class/hand_measurement
 ```
 And send commands by publishing this topic:
 ```
-rostopic pub -r 20 /qb_class/hand_ref qb_interface/handRef '{closure:[10000000.0]}'
+~$ rostopic pub -r 20 /qb_class/hand_ref qb_interface/handRef '{closure:[10000000.0]}'
 ```
 The ```hand_command``` in the ```config.yaml``` file is set to ```TICKS``` so very large **positive** numbers are for opening the hand and very large **negative** are for closing.
