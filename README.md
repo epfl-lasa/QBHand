@@ -107,4 +107,4 @@ And send commands by publishing this topic:
 ```
 rostopic pub -r 20 /qb_class/hand_ref qb_interface/handRef '{closure:[10000000.0]}'
 ```
-The hand_command in the config.yaml file is set to ticks so very large **positive** numbers are for opening the hand and very large **negative** are for closing.
+The ```hand_command``` in the ```config.yaml``` file is set to ```TICKS``` so very large **positive** numbers are for opening the hand and very large **negative** are for closing.
