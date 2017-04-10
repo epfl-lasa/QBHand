@@ -1,11 +1,11 @@
 # QBHand
-Installation instructions and software for interfacing with the QBHand.  (Unix/Linux instructions)
+Installation instructions and software for interfacing with the QBHand.  (Unix/Linux instructions).
 
-(For Windows pull the -Windows branch.)
+## Hardware Setup
 
-TODO:
-Check out this repo for use with ROS/Gazebo: https://github.com/CentroEPiaggio/pisa-iit-soft-hand
-or this one: https://github.com/qbrobotics/qb_interface_node
+<p align="center">
+<img src="https://github.com/epfl-lasa/QBHand/blob/master/documentation/hand_connected.jpg" width="390"><img src="https://github.com/epfl-lasa/QBHand/blob/master/documentation/power_connections.jpg" width="390">
+</p>
 
 ## Step 1: Verify USB/Serial Driver
 
@@ -67,8 +67,6 @@ and run:
 ~$ ./HandTool
 ```
 
-
-
 ## Step 3: Install qbAPI
 The qbAPI is the C++ library needed to communicate and control the qbHand.We provide this folder in this repo, but if you need to update to a newer version download from: [qbAPI](https://github.com/qbrobotics/qbAPI).
 
@@ -91,4 +89,8 @@ To test API installation (sequence of open/close commands):
 ~$ cd ~/QBHand/qbadmin/bin_linux/
 ~$ ./qbadmin -k
 
-``
+```
+
+## Step 5: ROS Interface
+Check out this repo for use with ROS/Gazebo: https://github.com/CentroEPiaggio/pisa-iit-soft-hand
+or this one: https://github.com/qbrobotics/qb_interface_node
