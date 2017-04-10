@@ -79,7 +79,7 @@ The qbAPI is the C++ library needed to communicate and control the qbHand.We pro
 
 ```
 ## Step 4: Install qbadmin
-This package contains command-line tools for easy debugging and open/close of the hand. Downloaded from here: [handadmin](https://github.com/qbrobotics/qbadmin)
+This package contains command-line tools for easy debugging and open/close of the hand. Downloaded from here: [qbadmin](https://github.com/qbrobotics/qbadmin)
 ```
 ~$ cd ~/QBHand/qbadmin/src
 ~$ make
