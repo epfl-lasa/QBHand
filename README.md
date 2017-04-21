@@ -104,11 +104,12 @@ We can read the motor measurements on the following topic:
 ~$ rostopic echo /qb_class/hand_measurement
 ```
 And send commands by publishing this topic
-to open:
+
+*To open:*
 ```
  rostopic pub --once /qb_class/hand_ref qb_interface/handRef '{closure:[0.0]}'
 ```
-to close:
+*To close:*
 ```
  rostopic pub --once /qb_class/hand_ref qb_interface/handRef '{closure:[19000.0]}'
 ```
