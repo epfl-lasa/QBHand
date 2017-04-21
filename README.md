@@ -103,8 +103,13 @@ We can read the motor measurements on the following topic:
 ```
 ~$ rostopic echo /qb_class/hand_measurement
 ```
-And send commands by publishing this topic:
+And send commands by publishing this topic
+to open:
 ```
-~$ rostopic pub -r 20 /qb_class/hand_ref qb_interface/handRef '{closure:[10000000.0]}'
+ rostopic pub --once /qb_class/hand_ref qb_interface/handRef '{closure:[0.0]}'
 ```
-The ```hand_command``` in the ```config.yaml``` file is set to ```TICKS``` so very large **positive** numbers are for opening the hand and very large **negative** are for closing.
+to close:
+```
+ rostopic pub --once /qb_class/hand_ref qb_interface/handRef '{closure:[19000.0]}'
+```
+To have partial closing, use numbers in between [7000,15000].
