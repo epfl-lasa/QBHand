@@ -86,6 +86,14 @@ This package contains command-line tools for easy debugging and open/close of th
 
 ```
 
+The hand and the dummy must have different IDs. To check the IDs write the following commands:
+
+```
+~$ cd ~/QBHand/qbadmin/bin_linux/
+~$ ./qbadmin -p
+
+```
+
 To test API installation (sequence of open/close commands):
 
 ```
@@ -114,3 +122,4 @@ And send commands by publishing this topic
  rostopic pub --once /qb_class/hand_ref qb_interface/handRef '{closure:[19000.0]}'
 ```
 To have partial closing, use numbers in between [7000,15000].
+ 
