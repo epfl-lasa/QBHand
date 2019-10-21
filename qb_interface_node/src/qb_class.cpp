@@ -61,20 +61,20 @@ qb_class::qb_class(){
 
 	// Get param from roslaunch or yaml file
 
-	node_->param("/eq_preset", flagCMD_type_, true);
-	node_->param("/hand_perc", flag_HCMD_type_, false);
-	node_->param("/current", flag_curr_type_, false);
-	node_->param<double>("/step_time", step_time_, 0.002);
-	node_->param<string>("/port", port, "/dev/ttyUSB0");
-	node_->param<int>("/baudrate", br, 2000000);
+	node_->param("eq_preset", flagCMD_type_, true);
+	node_->param("hand_perc", flag_HCMD_type_, false);
+	node_->param("current", flag_curr_type_, false);
+	node_->param<double>("step_time", step_time_, 0.002);
+	node_->param<string>("port", port, "/dev/ttyUSB0");
+	node_->param<int>("baudrate", br, 2000000);
 
-	node_->searchParam("/IDcubes", aux);
+	node_->searchParam("IDcubes", aux);
 	node_->getParam(aux, ID_cube);
 
-	node_->searchParam("/IDhands", aux);
+	node_->searchParam("IDhands", aux);
 	node_->getParam(aux, ID_hand);
 
-	node_->param<string>("/unit", aux, "DEG");
+	node_->param<string>("unit", aux, "DEG");
 
 	// Choose Right unit of measurement
 	
@@ -153,40 +153,40 @@ qb_class::qb_class(){
 	if (!hand_chain_.empty()){
 
 		// Subscriber initialize	
- 		hand_sub = node_->subscribe("/qb_class/hand_ref", 1, &qb_class::handRefCallback, this); 		
+ 		hand_sub = node_->subscribe("qb_class/hand_ref", 1, &qb_class::handRefCallback, this); 		
 
 		// Publisher initialize
 
 		// Outside command publisher, self-open but not internally used topic
-		handRef_pub = node_->advertise<qb_interface::handRef>("/qb_class/hand_ref", 1);
+		handRef_pub = node_->advertise<qb_interface::handRef>("qb_class/hand_ref", 1);
 
 		// Publisher to publish new read positions
-		hand_pub = node_->advertise<qb_interface::handPos>("/qb_class/hand_measurement", 1);
+		hand_pub = node_->advertise<qb_interface::handPos>("qb_class/hand_measurement", 1);
 
 		// Current TOPIC
 
 		if (flag_curr_type_)
-			hand_curr_pub = node_->advertise<qb_interface::handCurrent>("/qb_class/hand_current", 1);
+			hand_curr_pub = node_->advertise<qb_interface::handCurrent>("qb_class/hand_current", 1);
 	}
 
 	if (!cube_chain_.empty()){
 
 		// Subscriber initialize
-		cube_sub = node_->subscribe("/qb_class/cube_ref", 1000, &qb_class::cubeRefCallback, this);
+		cube_sub = node_->subscribe("qb_class/cube_ref", 1000, &qb_class::cubeRefCallback, this);
 		// Publisher initialize
 
 		// Outside command publisher, self-open but not internally used topic
-		cubeRef_pub = node_->advertise<qb_interface::cubeRef>("/qb_class/cube_ref", 1);
+		cubeRef_pub = node_->advertise<qb_interface::cubeRef>("qb_class/cube_ref", 1);
 
 		// Publisher to publish new read positions
 		if (flagCMD_type_ == EQ_PRESET)
-			cube_pub = node_->advertise<qb_interface::cubeEq_Preset>("/qb_class/cube_measurement", 1);
+			cube_pub = node_->advertise<qb_interface::cubeEq_Preset>("qb_class/cube_measurement", 1);
 		else
-			cube_pub = node_->advertise<qb_interface::cubePos>("/qb_class/cube_measurement", 1);
+			cube_pub = node_->advertise<qb_interface::cubePos>("qb_class/cube_measurement", 1);
 
 		// Current TOPIC
 		if (flag_curr_type_)
-			cube_curr_pub = node_->advertise<qb_interface::cubeCurrent>("/qb_class/cube_current", 1);
+			cube_curr_pub = node_->advertise<qb_interface::cubeCurrent>("qb_class/cube_current", 1);
 	}
 
 }
