@@ -57,26 +57,60 @@ qb_class::qb_class(){
 
 	// Initialize ROS Node
 
-	node_ = new ros::NodeHandle("qb_interface_node_");
+	pub_node_ = new ros::NodeHandle("qb_interface_node");  // a public node for topic communications
+	pr_node_ = new ros::NodeHandle("~");  // a private node to retrieve the rosparams
 
 	// Get param from roslaunch or yaml file
 
-	node_->param("/eq_preset", flagCMD_type_, true);
-	node_->param("/hand_perc", flag_HCMD_type_, false);
-	node_->param("/current", flag_curr_type_, false);
-	node_->param<double>("/step_time", step_time_, 0.002);
-	node_->param<string>("/port", port, "/dev/ttyUSB0");
-	node_->param<int>("/baudrate", br, 2000000);
+	pr_node_->searchParam("port", aux);
+	ROS_INFO_STREAM("Found the param here : " << aux);
+	if(!pr_node_->getParam(aux, port))
+    {
+    	ROS_WARN_STREAM("Cannot find the port on the rosparam. Using default value (/dev/ttyUSB0)");
+    	port = "/dev/ttyUSB0";
+    }
+    ROS_INFO_STREAM("Using port: " << port);
 
-	ROS_INFO_STREAM("Using port: " << port);
+	pr_node_->searchParam("eq_preset", aux);
+	if(!pr_node_->getParam(aux, flagCMD_type_))
+	{
+		flagCMD_type_ = true;
+	}
 
-	node_->searchParam("/IDcubes", aux);
-	node_->getParam(aux, ID_cube);
+	pr_node_->searchParam("hand_perc", aux);
+	if(!pr_node_->getParam(aux, flag_HCMD_type_))
+	{
+		flag_HCMD_type_ = false;
+	}
 
-	node_->searchParam("/IDhands", aux);
-	node_->getParam(aux, ID_hand);
+	pr_node_->searchParam("current", aux);
+	if(!pr_node_->getParam(aux, flag_curr_type_))
+	{
+		flag_curr_type_ = false;
+	}
 
-	node_->param<string>("/unit", aux, "DEG");
+	pr_node_->searchParam("step_time", aux);
+	if(!pr_node_->getParam(aux, step_time_))
+	{
+		step_time_ = 0.002;
+	}
+
+	pr_node_->searchParam("baudrate", aux);
+	if(!pr_node_->getParam(aux, br))
+	{
+		br = 2000000;
+	}
+
+
+	pr_node_->searchParam("IDcubes", aux);
+	pr_node_->getParam(aux, ID_cube);
+
+	pr_node_->searchParam("IDhands", aux);
+	pr_node_->getParam(aux, ID_hand);
+
+	pr_node_->param<string>("unit", aux, "DEG");
+
+
 
 	// Choose Right unit of measurement
 	
@@ -154,41 +188,43 @@ qb_class::qb_class(){
 
 	if (!hand_chain_.empty()){
 
+		ROS_INFO_STREAM("qb_interface: creating the topics at: " << pub_node_->getNamespace());
+
 		// Subscriber initialize	
- 		hand_sub = node_->subscribe("qb_class/hand_ref", 1, &qb_class::handRefCallback, this); 		
+ 		hand_sub = pub_node_->subscribe("qb_class/hand_ref", 1, &qb_class::handRefCallback, this); 		
 
 		// Publisher initialize
 
 		// Outside command publisher, self-open but not internally used topic
-		handRef_pub = node_->advertise<qb_interface::handRef>("qb_class/hand_ref", 1);
+		handRef_pub = pub_node_->advertise<qb_interface::handRef>("qb_class/hand_ref", 1);
 
 		// Publisher to publish new read positions
-		hand_pub = node_->advertise<qb_interface::handPos>("qb_class/hand_measurement", 1);
+		hand_pub = pub_node_->advertise<qb_interface::handPos>("qb_class/hand_measurement", 1);
 
 		// Current TOPIC
 
 		if (flag_curr_type_)
-			hand_curr_pub = node_->advertise<qb_interface::handCurrent>("qb_class/hand_current", 1);
+			hand_curr_pub = pub_node_->advertise<qb_interface::handCurrent>("qb_class/hand_current", 1);
 	}
 
 	if (!cube_chain_.empty()){
 
 		// Subscriber initialize
-		cube_sub = node_->subscribe("qb_class/cube_ref", 1000, &qb_class::cubeRefCallback, this);
+		cube_sub = pub_node_->subscribe("qb_class/cube_ref", 1000, &qb_class::cubeRefCallback, this);
 		// Publisher initialize
 
 		// Outside command publisher, self-open but not internally used topic
-		cubeRef_pub = node_->advertise<qb_interface::cubeRef>("qb_class/cube_ref", 1);
+		cubeRef_pub = pub_node_->advertise<qb_interface::cubeRef>("qb_class/cube_ref", 1);
 
 		// Publisher to publish new read positions
 		if (flagCMD_type_ == EQ_PRESET)
-			cube_pub = node_->advertise<qb_interface::cubeEq_Preset>("qb_class/cube_measurement", 1);
+			cube_pub = pub_node_->advertise<qb_interface::cubeEq_Preset>("qb_class/cube_measurement", 1);
 		else
-			cube_pub = node_->advertise<qb_interface::cubePos>("qb_class/cube_measurement", 1);
+			cube_pub = pub_node_->advertise<qb_interface::cubePos>("qb_class/cube_measurement", 1);
 
 		// Current TOPIC
 		if (flag_curr_type_)
-			cube_curr_pub = node_->advertise<qb_interface::cubeCurrent>("qb_class/cube_current", 1);
+			cube_curr_pub = pub_node_->advertise<qb_interface::cubeCurrent>("qb_class/cube_current", 1);
 	}
 
 }

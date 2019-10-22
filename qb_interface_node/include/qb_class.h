@@ -158,7 +158,8 @@ class qb_class{
 
 		// Ros node handle
 
-		ros::NodeHandle* node_;
+		ros::NodeHandle* pub_node_;
+		ros::NodeHandle* pr_node_;
 
 		// Subscriber Variables
  		ros::Subscriber cube_sub;
