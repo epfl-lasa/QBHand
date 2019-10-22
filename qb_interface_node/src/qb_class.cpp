@@ -61,20 +61,22 @@ qb_class::qb_class(){
 
 	// Get param from roslaunch or yaml file
 
-	node_->param("eq_preset", flagCMD_type_, true);
-	node_->param("hand_perc", flag_HCMD_type_, false);
-	node_->param("current", flag_curr_type_, false);
-	node_->param<double>("step_time", step_time_, 0.002);
-	node_->param<string>("port", port, "/dev/ttyUSB0");
-	node_->param<int>("baudrate", br, 2000000);
+	node_->param("/eq_preset", flagCMD_type_, true);
+	node_->param("/hand_perc", flag_HCMD_type_, false);
+	node_->param("/current", flag_curr_type_, false);
+	node_->param<double>("/step_time", step_time_, 0.002);
+	node_->param<string>("/port", port, "/dev/ttyUSB0");
+	node_->param<int>("/baudrate", br, 2000000);
 
-	node_->searchParam("IDcubes", aux);
+	ROS_INFO_STREAM("Using port: " << port);
+
+	node_->searchParam("/IDcubes", aux);
 	node_->getParam(aux, ID_cube);
 
-	node_->searchParam("IDhands", aux);
+	node_->searchParam("/IDhands", aux);
 	node_->getParam(aux, ID_hand);
 
-	node_->param<string>("unit", aux, "DEG");
+	node_->param<string>("/unit", aux, "DEG");
 
 	// Choose Right unit of measurement
 	
