@@ -108,7 +108,12 @@ qb_class::qb_class(){
 	pr_node_->searchParam("IDhands", aux);
 	pr_node_->getParam(aux, ID_hand);
 
-	pr_node_->param<string>("unit", aux, "DEG");
+
+
+	pr_node_->searchParam("unit", aux);
+	pr_node_->getParam(aux, aux);
+
+    ROS_INFO_STREAM("Found unit: " << aux);
 
 
 
@@ -128,6 +133,10 @@ qb_class::qb_class(){
 			}
 		}
 	}
+
+	ROS_INFO_STREAM("Using unit: " << meas_unit_ << " {RAD, DEG, TICK}");
+
+
 
 	qb_comm_ = NULL;
 
@@ -539,7 +548,8 @@ bool qb_class::readMeas(){
 
 	for (int i = hand_chain_.size(); i--;){
     	if (!hand_chain_[i]->getMeas(meas)){
-    		cerr << "[WARNING] Unable to retrieve measurements of hand: " << hand_chain_[i]->getID() << endl;
+    		// cerr << "[WARNING] Unable to retrieve measurements of hand: " << hand_chain_[i]->getID() << endl;
+    		ROS_WARN_STREAM_THROTTLE(3, "[WARNING] Unable to retrieve measurements of hand: " << hand_chain_[i]->getID());
             status = false;
 
             closure.push_back(NAN);
