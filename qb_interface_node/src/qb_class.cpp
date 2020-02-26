@@ -668,7 +668,7 @@ void qb_class::move() {
 void qb_class::spinOnce(){
 
 	if (qb_comm_ == NULL){
-		cout << "[ERROR] Connection error in spin() function." << endl;
+		ROS_WARN_STREAM_THROTTLE(2,"[ERROR] Connection error in spin() function.");
 		return;
 	}
 
